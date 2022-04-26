@@ -1,2 +1,4 @@
 # simplegraph
-   A Python Library for Managing Directed Graph
+
+A Python Library for Managing Directed Graphs
+   
