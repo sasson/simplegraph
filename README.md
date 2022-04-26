@@ -1,4 +1,4 @@
-# simplegraph
+# classidgraph
 
-A Python Library for Managing Directed Graphs
+A simple Graph Management Library for Python. 
    
