@@ -1,10 +1,7 @@
-streamlit
-cohere
 numpy
 pyyaml
 typing
-langchain
-toml
+
 
 
 
