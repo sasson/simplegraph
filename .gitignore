@@ -1,0 +1,5 @@
+# Ignore the .bat file
+a.bat
+
+# Ignore secrets.toml
+secrets.toml
