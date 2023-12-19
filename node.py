@@ -14,7 +14,7 @@ class Node:
         outgoing_links (dict): Dictionary of outgoing links categorized by their goal class.
     """
 
-    def __init__(self, Class : str, Id : str, text : str = "", vector : List[float] = []):
+    def __init__(self, cl : str, id : str, text : str = "", vector : List[float] = []):
         """
         Initialize a Node object.
 
@@ -24,7 +24,8 @@ class Node:
             text (str): Textual description of the node.
             vector (List[float]): Vector representation of the node.
         """
-        self.Class, self.Id = (Class, Id)
+        self.cl = cl
+        self.id = id
         self.text = text
         self.vector = vector
         self.incoming_links = {}
@@ -32,32 +33,27 @@ class Node:
 
     def add_incoming_link(self, link : Link):
         """
-        Add an incoming link to this node.
+        Add an incoming link.
 
         Args:
-            link (Link): The link to be added.
+            link  (Link): The incoming link to be added.
         """
-        source_class = link.source_class
-        if source_class not in self.incoming_links:
-            self.incoming_links[source_class] = LinksById(source_class)
-        self.incoming_links[link.source_class][link.source_id] = link
+
+        cl, id = link.source
+        if cl not in self.incoming_links:
+            self.incoming_links[cl] = {}
+        self.incoming_links[cl][id] = link
 
     def add_outgoing_link(self, link : Link):
         """
-        Add an outgoing link from this node.
+        Add an outgoing link.
 
         Args:
-            link (Link): The link to be added.
+            link  (Link): The link to be added.
         """
-        goal_class = link.goal_class
-        if goal_class not in self.outgoing_links:
-            self.outgoing_links[goal_class] = LinksById(goal_class)
-        self.outgoing_links[goal_class][link.goal_id] = link
 
-class NodesById(dict):
-    def __init__(self, node_class : str):
-        self.node_class = node_class
+        cl, id = link.goal
+        if cl not in self.outgoing_links:
+            self.outgoing_links[cl] = {}
+        self.outgoing_links[cl][id] = link
 
-class LinksById(dict):
-    def __init__(self, goal_class : str):
-        self.goal_class = goal_class
