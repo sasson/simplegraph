@@ -1,7 +1,6 @@
 from typing import List
-from link import Link
 
-class Node:
+class Vertix:
     """
     Represents a node in a directed graph.
 
@@ -28,32 +27,7 @@ class Node:
         self.id = id
         self.text = text
         self.vector = vector
-        self.incoming_links = {}
-        self.outgoing_links = {}
+        self.incoming_edges = {}
+        self.outgoing_edges = {}
 
-    def add_incoming_link(self, link : Link):
-        """
-        Add an incoming link.
-
-        Args:
-            link  (Link): The incoming link to be added.
-        """
-
-        cl, id = link.source
-        if cl not in self.incoming_links:
-            self.incoming_links[cl] = {}
-        self.incoming_links[cl][id] = link
-
-    def add_outgoing_link(self, link : Link):
-        """
-        Add an outgoing link.
-
-        Args:
-            link  (Link): The link to be added.
-        """
-
-        cl, id = link.goal
-        if cl not in self.outgoing_links:
-            self.outgoing_links[cl] = {}
-        self.outgoing_links[cl][id] = link
 
